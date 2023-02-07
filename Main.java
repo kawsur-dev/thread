@@ -27,6 +27,18 @@ public class Main {
         thread1.start();
         thread2.start();
         
+        try {
+            thread1.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            thread2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        
         System.out.println("Final count: " + counter.getCounter());
     }
 }
